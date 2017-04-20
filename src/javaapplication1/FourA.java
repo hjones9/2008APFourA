@@ -16,11 +16,22 @@ public class FourA {
      */
     public static void main(String[] args) {
         Checker broccoliChecker = new SubstringChecker("broccoli");
-       boolean test = broccoliChecker.accept("carrots are great");
+        Checker turkey = new SubstringChecker("turkey");
+        Checker and = new AndChecker(turkey, broccoliChecker);
+        Checker no = new NotChecker(turkey);
+       boolean test = and.accept("turkey pudding and broccoli");
+       boolean tried = no.accept("pudding");
+       
         if(test){
-        System.out.println("It works!");
+        System.out.println("It has both");
         
-        }
+        }else{System.out.println("It has neither");}
+        
+        if(tried){
+        System.out.println("It doesn't have it.");
+        
+        }else{System.out.println("It has it");}
+        
     }
     
 }
